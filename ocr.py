@@ -20,8 +20,10 @@ def ocr(image_file):
 def main(dir_):
     # function pulls in files from directory and uses ocr to convert all files into text
     files = os.listdir(dir_)
-    picture_files = [dir_ + '/' + x for x in files if x.lower().endswith('png')]
+    pic_extensions = ['jpg', 'png', 'gif', 'svg', 'jpeg', 'eps', 'ico', 'tiff']
+    picture_files = [dir_ + '/' + x for x in files if x.lower().split('.')[-1] in pic_extensions]
     txt = ''
+
     for picture in tqdm(picture_files, desc='parsing files'):
         txt = txt + '\n' + ocr(picture)
 
