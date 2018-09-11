@@ -31,10 +31,7 @@ def main(dir_):
 def write_out(o_file, text):
     with open(o_file, 'wb') as fi:
         fi.write(words.encode('utf-8'))
-        
 
-
-    return opts, args
 
 if __name__=="__main__":
     parser = argparse.ArgumentParser(description='cli OCR tool')
@@ -46,6 +43,6 @@ if __name__=="__main__":
     args = parser.parse_args()
 
     words = main(args.directory)
-    write_out(args.outputfile)
+    write_out(args.outputfile, words)
 
     

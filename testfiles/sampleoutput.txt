@@ -1,0 +1,200 @@
+
+Addressing the N eed for a
+Model Selection Framework in
+
+Systems Biology Using
+Information Theory
+
+This paper develops the argument that information—theoretic model selection
+metrics should be extended to nonnested model comparison applications
+in systems biology.
+
+By FRANK DEVILBISS AND DORAISWAMI RAMKRISHNA
+ABSTRACT I The field of systems biology thrives upon the
+use of models to organize biological knowledge and make
+predictions of complex processes that are hard to measure.
+When attempting to generate model descriptions for meta-
+bolic systems. one arrives at a crossroads. A variety of mathe-
+matical explanations are available for metabolic data with
+varying degrees of resolution from simple to complex. Biolog-
+ical modelers often rely upon subjective arguments to choose
+one framework over another. While there is no universal rule
+to determine the absolute utility of a model. certain metrics
+founded on information theoretical principles. demonstrate
+promise in providing a coherent. rational. and objective basis
+for addressing this model selection problem in systems biol-
+ogy. A model seeks to capture the regularity in biological
+
+data. Models that best capture regularity in data without ex-
+cessive complexity are the most useful for applications in op-
+
+timization and control. To demonstrate the efficacy of such
+an approach. several metabolic model selection scenarios are
+investigated. This work develops the argument that informa-
+tion theoretic model selection metrics should be extended to
+nonnested model comparison applications in systems biology.
+It also makes a novel comparison of kinetic. constraint-based.
+and cybernetic models of metabolism based not only on
+model accuracy. but also model complexity. The results show
+the strengths of lumped hybrid cybernetic model (L-HCM) and
+flux balance analysis (FBA) for applications in steady state
+flux prediction. Also. the hybrid cybernetic model's (HCM)
+merit in the modeling of dynamic changes in fluxes is also
+established.
+
+KEYWORDS I Biological systems modeling; cybemeﬁcs; infor-
+mation theory
+
+I. INTRODUCTION
+
+When given an arbitrary set of data, one can generate a
+host of different mathematical descriptions for it. Meta-
+bolic systems are no exception and embody an important
+branch of systems biological study. In order to predict
+the effects of perturbations to metabolic networks such
+as deleting genes or inhibiting enzymes, it is useful to
+first use a model to understand, without additional ex-
+perimentation, the effects of such modifications. To
+
+model the changes in metabolic systems, one can select
+kinetic, constraint-based, or cybernetic formulations.
+
+Each of these metabolic models is unique in formulation
+and widely used for similar goals.
+
+In very general terms, the utility of a model is de-
+rived from its ability to describe regularity in data. Regu-
+larity, or coherence in a set of data, means that the data
+are generated as the result of some intelligible process
+[1]. For metabolic ﬂux data, each type of model is able to
+capture the coherence of metabolic processes to a certain
+degree. These models also have varying degrees of com-
+
+plexity which are used to explain the behavior of data.
+To establish which model is best for the purposes of
+optimization and control, it is proposed that models be
+selected on the basis of how well they are able to capture
+the regularity of data without being excessively complex.
+
+In this work, a number of widely used mathematical
+approximations of metabolic systems are compared ac-
+cording to the ability of each to capture regularity in
+data. While there is much discourse on the merits of
+each modeling framework [2]-—[6], no systematic method
+has been implemented to quantitatively and simulta-
+neously measure the relative accuracies and complexities
+of metabolic models. This work applies information theo-
+retic metrics, well known in other ﬁelds, to address this
+problem. Treating each model as an en“
+g = ;_ 1 channel, one
+can quantitativer evaluate how well a model balances
+accuracy and complexity. Models that accurately repro-
+duce data with low complexity require less information
+to communicate and embody a more compressed descrip-
+tion of a process's data. This method of evaluation is es-
+
+ 
+
+pecially useful in situations where model formulations
+are vastly different (i.e., nonnested).
+
+The establishment of the model that best minimizes
+penalties for both error and parameterization is deemed to
+be the best model for an application related to the optimi-
+
+zation and control of biological systems. Restated, there is
+a point in diminishing returns for model complexity. Addi-
+
+tional parameters may enhance accuracy, but each addi-
+tional parameter has an intrinsic cost associated with it.
+
+A set of four distinct models of metabolic ﬂuxes are
+judged in their ability to describe metabolic reaction
+rates at a given steady state. Following this, dynamic
+metabolic models are compared in their ability to predict
+changing metabolic ﬂuxes. These dynamic models of
+metabolic ﬂuxes have never been compared in this objec-
+tive fashion. Neither have such a wide range of steady
+
+state descriptions of metabolic ﬂuxes been compared.
+The application of these metrics in these scenarios helps
+
+to establish a new way of thinking about metabolic
+model selection. Moreover, a quantitative framework for
+comparing nonnested biological models is necessary to
+introduce to the ﬁeld of systems biology.
+
+II. METHODS
+
+A. Theory
+
+To develop the model selection framework, it is first
+useful to review some basic tenets of information theory for
+those who might be unfamiliar. In the ﬁeld of communica-
+tion, signals that are being passed through a channel are an-
+alyzed and compressed depending on how much regularity
+is present in a given message. Compression is a useful tool
+in that shorter messages lead to faster communication.
+For example, consider the two messages below:
+
+1) 011010111010010001011;
+2) 000010000000000000000.
+Sequence 1) is generated from some arbitrary process
+where either 0 or 1 share equal probabilities of occur-
+rence. On the other hand, sequence 2) is generated from
+
+a process where the probability of l is 1120. To commu-
+nicate either sequence, one could send each 1 or 0 value
+individually or one could compress the information
+down into a shorter sequence. Given the fact that either
+ones or zeros are equally probable in 1), it is virtually in-
+compressible. On the other hand, sequence 2) can be
+shortened in a number of ways.
+
+For example, sequence 2) can be simply described by
+specifying the position of the single one rather than the
+whole sequence assuming the decoder understands the
+
+compression scheme. In case 2), one could rewrite
+the sequence as “S" specifying the location of the single 1.
+
+For this 20-b sequence, specifying the position of a single
+one in any of 20 possible locations requires up to S b
+( [(log2(20)]) instead of 20 for compressing any position
+in the sequence of 20 b. This represents a compression
+factor of 0.25 compared to communicating the entirety of
+the original sequence. Other, more efﬁcient coding
+schemes are possible and the fundamental limit of com-
+pression of these data sequences is quantified using
+Shannon's entropy [7]
+
+HM = Zn log(p;) (1)
+
+in which pi represents the probability of a 0 or 1 occur-
+ring in the sequence. The motivation for compression is
+increasing the overall rate of communication. The more
+
+compressed a message is, the less time is spent communi-
+cating it. In terms of entropy, the highest entropy se-
+
+quence will consist of bits generated by the method of 2).
+In the same way that a message can be compressed by a
+proper coding scheme, we can say that biological data can
+be compressed by a model. It is here where the minimum
+description length principle (MDL) becomes useful in
+that one can reinterpret the model selection problem as
+one of data compression [1]. The aim is to shrink the data
+
+D into some U from which D can be perfectly recon-
+structed after compression. For some model M, there is a
+
+length of the data L(D’) that is determined as
+H”) = L(DIM) + NM) (2)
+
+where L(DIM) expresses the data in terms of the model
+and L(M) is a description of the models complexity [1],
+[8]. The term L(DIM) accounts for the extra information
+that needs to be transmitted in order to describe the
+model prediction‘s distance from the real data. For exam-
+ple, if the model prediction comes close to the data, less
+information is needed to communicate the model error
