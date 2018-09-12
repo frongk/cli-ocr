@@ -18,7 +18,7 @@ python ocr.py testfiles testfiles/sampleoutput.txt
 ```
 
 ## Main Dependencies
-`tesseract`- https://github.com/tesseract-ocr/tesseract (make sure to update your PATH to include it)
-`pytesseract` - `pip install pytesseract` (https://pypi.org/project/pytesseract/)
-`PIL` - Python Image Library (https://pillow.readthedocs.io/en/5.2.x/)  
-`tqdm` - status bars are nice (https://github.com/tqdm/tqdm)
+`tesseract`- https://github.com/tesseract-ocr/tesseract (make sure to update your PATH to include it)  
+`pytesseract` - `pip install pytesseract` (https://pypi.org/project/pytesseract/)  
+`PIL` - Python Image Library (https://pillow.readthedocs.io/en/5.2.x/)   
+`tqdm` - status bars are nice (https://github.com/tqdm/tqdm)  
